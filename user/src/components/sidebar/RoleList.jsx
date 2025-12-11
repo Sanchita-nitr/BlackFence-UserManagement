@@ -36,8 +36,8 @@ export default function RoleList() {
 
   return (
     <aside className="w-[290px] pr-6 h-full">
-      <div className="bg-gradient-to-b from-white via-blue-50 to-gray-50 rounded-xl p-4 shadow-sm h-full overflow-auto">
-        <h3 className="text-lg font-semibold mb-4">AI Mental Roles</h3>
+      <div className="bg-gradient-to-b from-[#FEFEFE] via-[#EDF0F4] to-[#FFFFFF] rounded-xl p-4 shadow-sm h-full overflow-auto">
+        <h3 className="text-lg font-semibold mb-4 justify-center flex">AI Mental Roles</h3>
 
         <div className="space-y-3">
           {Object.entries(items).map(([label, tag], index) => {

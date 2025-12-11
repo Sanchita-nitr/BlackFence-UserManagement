@@ -15,7 +15,7 @@ export default function StatusCard({ item, selected = false }) {
           <div className="flex flex-col min-w-0 flex-1">
             <h4 className="text-base font-semibold text-slate-900 break-words">
               {item.title}{" "}
-              <span className="text-sm text-gray-500 font-semibold">
+              <span className="text-sm text-gray-500">
                 {item.subtitle}
               </span>
             </h4>
