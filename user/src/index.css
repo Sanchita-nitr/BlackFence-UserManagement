@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body { @apply bg-gray-50; }
+
+@layer utilities {
+  .soft-shadow { box-shadow: 0 6px 18px rgba(13,27,41,0.06); }
+}
