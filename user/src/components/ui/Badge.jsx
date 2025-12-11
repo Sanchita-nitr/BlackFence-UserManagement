@@ -16,17 +16,18 @@ export default function Badge({
   };
 
   const priorityStyles = {
-    Critical: "bg-red-500 text-white",
-    High: "bg-[#FFEDF1] text-white",
-    Medium: "bg-yellow-500 text-white",
-    Low: "bg-[#B1FDB1] text-white",
+    Critical: "bg-red-100 text-red-600 border border-red-300",
+    High: "bg-orange-100 text-orange-600 border border-orange-300",
+    Medium: "bg-yellow-100 text-yellow-600 border border-yellow-300",
+    Low: "bg-green-100 text-green-600 border border-green-300",
   };
 
   if (variant === "priority") {
     return (
       <span
-        className={`inline-block rounded-md text-sm font-medium ${
-          priorityStyles[value] || "bg-gray-300 text-gray-700"
+        className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${
+          priorityStyles[value] ||
+          "bg-gray-100 text-gray-700 border border-gray-300"
         } ${className}`}
       >
         {value}
