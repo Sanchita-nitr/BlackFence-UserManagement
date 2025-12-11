@@ -1,5 +1,5 @@
+import { TbCameraCancel } from "react-icons/tb";
 import Button from "../ui/Button";
-
 function KeyValue({ label, value }) {
   return (
     <div>
@@ -7,14 +7,6 @@ function KeyValue({ label, value }) {
       <div className="text-sm font-medium text-slate-900 break-words">
         {value}
       </div>
-    </div>
-  );
-}
-
-function IndicatorChip({ label }) {
-  return (
-    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 text-blue-600 text-sm font-semibold mr-2">
-      {label}
     </div>
   );
 }
@@ -100,25 +92,19 @@ export default function MetaDetail({ selected }) {
   if (!selected) {
     return (
       <aside className="w-96 pl-6 h-full">
-        <div className="bg-white rounded-xl h-full p-6 soft-shadow">
-          <div className="text-center text-gray-400">
-            <div className="mb-4">
-              <svg
-                className="w-12 h-12 mx-auto"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#cbd5e1"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </div>
-            <div className="text-lg font-semibold">
-              For Meta data, select the card
+        <div className="bg-[#F8F9FC] rounded-xl h-full p-6 soft-shadow">
+          <h2 className="text-xl font-semibold text-gray-700 mb-6">
+            Meta Detail
+          </h2>
+          <div className=" flex items-center justify-center">
+            <div className="text-center text-black space-y-4">
+              <div className="w-20 h-20 mx-auto flex items-center justify-center bg-[#ECF4FF] rounded-full border">
+                <TbCameraCancel className="text-4xl text-[#1E64C8]" />
+              </div>
+
+              <div className="text-lg font-semibold">
+                For Meta data, select the card
+              </div>
             </div>
           </div>
         </div>
@@ -143,9 +129,7 @@ export default function MetaDetail({ selected }) {
           <KeyValue label="App Name" value={"BRINSmobile"} />
           <KeyValue
             label="Package Name"
-            value={
-              "customer.brinsmobile.brins.my.com.infoconnect.hswuu.doiwur"
-            }
+            value={"customer.brinsmobile.brins.my.com.infoconnect.hswuu.doiwur"}
           />
           <KeyValue
             label="Download Link"
@@ -162,8 +146,11 @@ export default function MetaDetail({ selected }) {
           <div>
             <div className="text-xs text-gray-500 mb-2">Indicators</div>
             <div className="flex items-center gap-2 space-x-4 ">
-                <div className=" bg-[#ECF4FF] py-1.5 px-3 rounded-lg border border-[#1E64C8] text-[#1E64C8]"> Brand Name Misuse</div>
-             
+              <div className=" bg-[#ECF4FF] py-1.5 px-3 rounded-lg border border-[#1E64C8] text-[#1E64C8]">
+                {" "}
+                Brand Name Misuse
+              </div>
+
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-50 border border-[#BCBCBC] text-sm font-semibold text-slate-800">
                 Logo Match
               </div>

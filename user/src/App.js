@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div>
       <BlackFenceOverview/>
-      {/* <UserManagement /> */}
+      <UserManagement />
 
     </div>
   )
