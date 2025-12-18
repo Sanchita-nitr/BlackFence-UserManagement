@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { FaRegSquare } from "react-icons/fa6";
+
 const items = {
   "Situation Board": "Top Priority",
   "Priority Actions": "High",
@@ -29,34 +29,30 @@ const tagStyles = {
   },
 };
 
-export default function RoleList() {
-  const [selected, setSelected] = useState(null);
-
+export default function RoleList({ activeView, setActiveView }) {
   return (
-    <aside className="w-[290px] pr-6 h-full">
+    <aside className="w-80 pr-6 ml-3 h-full">
       <div className="bg-gradient-to-b from-[#FEFEFE] via-[#EDF0F4] to-[#FFFFFF] rounded-xl p-4 shadow-sm h-full overflow-auto">
-        <h3 className="text-lg font-semibold mb-4 justify-center flex">
+        <h3 className="text-lg font-semibold mb-4 flex justify-center">
           Security Views
         </h3>
 
         <div className="space-y-3">
           {Object.entries(items).map(([label, tag], index) => {
             const styles = tagStyles[tag];
-            const isSelected = selected === label;
+            const isSelected = activeView === label;
 
             return (
               <div
                 key={index}
-                onClick={() => setSelected(isSelected ? null : label)}
+                onClick={() => setActiveView(label)}
                 className={`flex items-center justify-between border rounded-lg p-3 cursor-pointer transition-all duration-200 ${
                   isSelected
                     ? "border-[#A7B6CC] bg-gradient-to-r from-[#A7B6CC42] to-[#2997FF0A]"
                     : "border-[#DBDEE1] bg-[#F2F3F4]"
                 }`}
               >
-                <div className="flex flex-col">
-                  <div className="text-sm font-medium">{label}</div>
-                </div>
+                <div className="text-sm font-medium">{label}</div>
 
                 <span
                   className="text-xs px-2 py-1 rounded-lg"
@@ -79,7 +75,7 @@ export default function RoleList() {
 
           <div className="p-4 border border-[#DBDEE1] bg-[#F2F3F4] rounded-lg flex items-center gap-3 cursor-pointer hover:bg-[#E9EAEB]">
             <FaRegSquare className="text-slate-700" size={18} />
-            <span className="text-slate-800 text-sm font-medium flex justify-center">
+            <span className="text-slate-800 text-sm font-medium">
               Compact View
             </span>
           </div>

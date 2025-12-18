@@ -7,7 +7,7 @@ function SmallHeading({ children }) {
 export default function DeepDive({ selected }) {
   if (!selected) {
     return (
-      <aside className="w-96 pl-6 h-full">
+      <aside className="w-80 h-full">
         <div className="bg-[#F8F9FC] rounded-xl h-full p-6 soft-shadow">
           <h2 className="text-xl font-semibold text-slate-800 mb-6">Deep Dive</h2>
 
@@ -38,7 +38,7 @@ export default function DeepDive({ selected }) {
   ];
 
   return (
-    <aside className="w-96 pl-6 h-full">
+    <aside className="w-[108%] h-full">
       <div className="bg-white rounded-xl h-full p-6 soft-shadow flex flex-col">
         <div className="mb-4">
           <h3 className="text-xl font-semibold text-slate-900">Deep Dive</h3>

@@ -13,6 +13,7 @@ import commandCenterCards from "../utils/commandCenterCards";
 export default function BlackFenceOverview() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
+  const [activeView, setActiveView] = useState("Situation Board");
 
   const [selectedSort, setSelectedSort] = useState(["priority"]);
   const handleSortToggle = (key) => {
@@ -21,7 +22,27 @@ export default function BlackFenceOverview() {
     );
   };
 
-  const searched = commandCenterCards.filter(
+  const getPriorityForView = (view) => {
+    switch (view) {
+      case "Situation Board":
+        return "Critical";
+      case "Priority Actions":
+        return "High";
+      case "Follow up Task":
+        return "Medium";
+      default:
+        return null;
+    }
+  };
+
+  const filteredByView = commandCenterCards.filter((c) => {
+    if (!activeView) return true;
+    const priorityForView = getPriorityForView(activeView);
+    if (!priorityForView) return true;
+    return c.priority === priorityForView;
+  });
+
+  const searched = filteredByView.filter(
     (c) =>
       c.title.toLowerCase().includes(query.toLowerCase()) ||
       c.summary.toLowerCase().includes(query.toLowerCase())
@@ -130,70 +151,44 @@ export default function BlackFenceOverview() {
 
   const center = (
     <div>
-      <div className="flex items-center justify-between mb-4  bg-[#FCFCFC] border border-slate-200 p-5 rounded-lg">
-        <div className="text-sm text-slate-600">
-          sort by:{" "}
-          <strong className="text-slate-900">
-            {selectedSort.length ? selectedSort.join(", ") : "None"}
-          </strong>
-        </div>
+      <div className="mb-4 bg-[#FCFCFC] border border-slate-200 p-4 rounded-lg">
+  <div className="flex items-center gap-6">
+    <span className="text-sm font-medium text-slate-700">
+      Sort by
+    </span>
 
-        <div className="flex items-center gap-4">
-          <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
-            <input
-              type="checkbox"
-              checked={selectedSort.includes("priority")}
-              onChange={() => handleSortToggle("priority")}
-              className="w-4 h-4 accent-indigo-600"
-            />
-            <span
-              className={
-                selectedSort.includes("priority")
-                  ? "font-semibold text-slate-900"
-                  : "text-slate-700"
-              }
-            >
-              Priority
-            </span>
-          </label>
+    <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
+      <input
+        type="checkbox"
+        checked={selectedSort.includes("priority")}
+        onChange={() => handleSortToggle("priority")}
+        className="w-4 h-4 accent-indigo-600"
+      />
+      <span className="text-slate-800">Priority</span>
+    </label>
 
-          <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
-            <input
-              type="checkbox"
-              checked={selectedSort.includes("confidence")}
-              onChange={() => handleSortToggle("confidence")}
-              className="w-4 h-4 accent-indigo-600"
-            />
-            <span
-              className={
-                selectedSort.includes("confidence")
-                  ? "font-semibold text-slate-900"
-                  : "text-slate-700"
-              }
-            >
-              Confidence
-            </span>
-          </label>
+    <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
+      <input
+        type="checkbox"
+        checked={selectedSort.includes("confidence")}
+        onChange={() => handleSortToggle("confidence")}
+        className="w-4 h-4 accent-indigo-600"
+      />
+      <span className="text-slate-800">Confidence</span>
+    </label>
 
-          <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
-            <input
-              type="checkbox"
-              checked={selectedSort.includes("freshness")}
-              onChange={() => handleSortToggle("freshness")}
-              className="w-4 h-4 accent-indigo-600"
-            />
-            <span
-              className={
-                selectedSort.includes("freshness")
-                  ? "font-semibold text-slate-900"
-                  : "text-slate-700"
-              }
-            >
-              Freshness
-            </span>
-          </label>
-        </div>
-      </div>
+    <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
+      <input
+        type="checkbox"
+        checked={selectedSort.includes("freshness")}
+        onChange={() => handleSortToggle("freshness")}
+        className="w-4 h-4 accent-indigo-600"
+      />
+      <span className="text-slate-800">Freshness</span>
+    </label>
+  </div>
+</div>
+
       <div className="p-5 bg-[#F86E871A] border border-white rounded-lg mb-4">
         <div className="font-bold">Critical work for today</div>
         <div>
@@ -216,10 +211,11 @@ export default function BlackFenceOverview() {
     </div>
   );
 
+
   return (
     <MainLayout
       top={top}
-      left={<ViewList />}
+      left={<ViewList activeView={activeView} setActiveView={setActiveView} />}
       center={center}
       right={<DeepDive selected={selected} />}
     />
