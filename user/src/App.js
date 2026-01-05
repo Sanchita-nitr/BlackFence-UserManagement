@@ -1,13 +1,12 @@
-import BlackFenceOverview from "./pages/BlackFenceOverview";
-import CommandCenter from "./pages/CommandCenter";
-import UserManagement from "./pages/UserManagement";
+import BriBankState from "./pages/BRIBankState";
 
 export default function App() {
   return (
     <div>
-      <CommandCenter/>
-      <BlackFenceOverview/>
-      <UserManagement />
+      <BriBankState />
+      {/* <CommandCenter />
+      <BlackFenceOverview />
+      <UserManagement /> */}
 
     </div>
   )

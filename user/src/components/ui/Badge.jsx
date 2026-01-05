@@ -8,11 +8,13 @@ export default function Badge({
     success: "text-green-600",
     muted: "text-gray-600",
     warning: "text-amber-600",
+    invited: "text-yellow-600",
   };
   const dot = {
     success: "bg-green-500",
     muted: "bg-gray-300",
     warning: "bg-amber-400",
+    invited: "bg-yellow-400",
   };
 
   const priorityStyles = {
