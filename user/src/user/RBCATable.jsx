@@ -11,7 +11,7 @@ import ActionMenu from "./ActionMenu";
 
 const columnHelper = createColumnHelper();
 
-export default function UserTable({ data = [] }) {
+export default function RBCATable({ data = [] }) {
   const [sorting, setSorting] = useState([{ id: "createdDate", desc: true }]);
 
   const handleSortingChange = (updater) => {

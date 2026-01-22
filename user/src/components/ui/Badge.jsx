@@ -9,12 +9,20 @@ export default function Badge({
     muted: "text-gray-600",
     warning: "text-amber-600",
     invited: "text-yellow-600",
+    critical: "text-red-600",
+    high: "text-orange-600",
+    medium: "text-yellow-600",
+    low: "text-green-600",
   };
   const dot = {
     success: "bg-green-500",
     muted: "bg-gray-300",
     warning: "bg-amber-400",
     invited: "bg-yellow-400",
+    critical: "bg-red-500",
+    high: "bg-orange-500",
+    medium: "bg-yellow-500",
+    low: "bg-green-400",
   };
 
   const priorityStyles = {

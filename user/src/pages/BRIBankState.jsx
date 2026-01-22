@@ -1,4 +1,11 @@
 import { useState } from "react";
+import Activity from "./Activity";
+import AssetsAndWhitelist from "./Assets&Whitelist";
+import Integrations from "./Integrations";
+import Modules from "./Modules";
+import Onboarding from "./OnBoarding";
+import ReportingAndScheduled from "./ReportingScheduled";
+import Support from "./Support";
 import UsersRBAC from "./Users&RBAC1st";
 
 const TABS = [
@@ -16,7 +23,6 @@ const TABS = [
 
 export default function BriBankStateOverview() {
   const [activeTab, setActiveTab] = useState("Overview");
-
   return (
     <div className="p-10 bg-gray-50 min-h-screen">
       <div className="flex gap-10 border-b mb-6 text-sm">
@@ -39,12 +45,10 @@ export default function BriBankStateOverview() {
         <div className="grid grid-cols-[360px_1fr] gap-6">
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h2 className="text-lg font-semibold mb-6">Client Details</h2>
-
             <TwoColRow
               left={{ label: "Client Name", value: "BRI Bank State" }}
               right={{ label: "Tenants ID", value: "amca-corp-prod" }}
             />
-
             <TwoColRow
               left={{ label: "Industry", value: "Technology" }}
               right={{
@@ -56,12 +60,10 @@ export default function BriBankStateOverview() {
                 ),
               }}
             />
-
             <TwoColRow
               left={{ label: "SLA Tier", value: "Enterprise" }}
               right={{ label: "Created Date", value: "December 20, 2023" }}
             />
-
             <div className="mt-6">
               <div className="text-sm text-gray-500 mb-2">Environment</div>
               <div className="flex gap-3">
@@ -69,11 +71,8 @@ export default function BriBankStateOverview() {
                 <EnvPill text="UAT" />
               </div>
             </div>
-
             <hr className="my-6" />
-
             <h3 className="text-lg font-semibold mb-4">Contact & Ownership</h3>
-
             <SingleCol label="Client SPOC" value="Product@sarvagaya.com" />
             <SingleCol label="Internal Owner" value="admin@blackfench.io" />
           </div>
@@ -91,12 +90,27 @@ export default function BriBankStateOverview() {
       )}
 
       {activeTab === "Users & RBAC" && <UsersRBAC />}
+      {activeTab === "Modules" && <Modules />}
+      {activeTab === "Onboarding" && <Onboarding />}
+      {activeTab === "Assets" && <AssetsAndWhitelist />}
+      {activeTab === "Integrations" && <Integrations />}
+      {activeTab === "Reporting" && <ReportingAndScheduled />}
+      {activeTab === "Activity" && <Activity />}
+      {activeTab === "Support" && <Support />}
 
-      {activeTab !== "Overview" && activeTab !== "Users & RBAC" && (
-        <div className="bg-white rounded-xl p-10 text-gray-500 text-sm">
-          {activeTab} content goes here.
-        </div>
-      )}
+      {activeTab !== "Overview" &&
+        activeTab !== "Users & RBAC" &&
+        activeTab !== "Modules" &&
+        activeTab !== "Onboarding" &&
+        activeTab !== "Assets" &&
+        activeTab !== "Integrations" &&
+        activeTab !== "Activity" &&
+        activeTab !== "Support" &&
+        activeTab !== "Reporting" && (
+          <div className="bg-white rounded-xl p-10 text-gray-500 text-sm">
+            {activeTab} content goes here.
+          </div>
+        )}
     </div>
   );
 }

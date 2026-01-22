@@ -1,21 +1,39 @@
-# TODO - Users & RBAC Navigation Implementation
 
-## Plan:
-1. Update `BRIBankState.jsx` - Import and render UsersRBAC component when "Users & RBAC" tab is active
-2. Update `Users&RBAC2nd.jsx` - Export RBACManagement component for import
-3. Update `Users&RBAC1st.jsx` - Add sub-tabs and import RBACManagement component
 
-## Status:
-- [x] Step 1: Update BRIBankState.jsx to use UsersRBAC component
-- [x] Step 2: Export RBACManagement from Users&RBAC2nd.jsx (already exported as default)
-- [x] Step 3: Add sub-tabs to Users&RBAC1st.jsx with RBACManagement import
+# Task: Connect Assets and Whitelist with Sub-tabs (like RBAC pattern)
 
-## Implementation Summary:
-1. **BRIBankState.jsx**: Added import for `UsersRBAC` and renders it when "Users & RBAC" tab is active
-2. **Users&RBAC1st.jsx**: 
-   - Added import for `RBACManagement` from `Users&RBAC2nd.jsx`
-   - Added `SUB_TABS` array with "User Management" and "RBAC Management"
-   - Added `activeSubTab` state with default "user-management"
-   - Added conditional rendering to show User Management table or RBAC Management based on active sub-tab
-3. **Users&RBAC2nd.jsx**: Already exports `RBACManagement` as default, no changes needed
+## Status: COMPLETED ✅
+
+## Understanding:
+- Users&RBAC1st.jsx has SUB_TABS: ["User Management", "RBAC Management"]
+- Assets.jsx and Whitelist.jsx are standalone pages that need to be connected
+- BRIBankState.jsx needs to show the combined Assets&Whitelist component when "Assets" tab is clicked
+
+## Changes Made:
+
+### Files Created:
+1. **`user/src/pages/Assets&Whitelist.jsx`**
+   - Parent component with sub-tabs: "Assets" and "Whitelist"
+   - Follows same structure as Users&RBAC1st.jsx
+   - Imports and renders Assets.jsx or Whitelist.jsx based on active sub-tab
+
+2. **`user/src/pages/Reporting&Scheduled.jsx`**
+   - Parent component with sub-tabs: "Report Generating Setting" and "Scheduled Reports"
+   - Follows same pattern as Assets&Whitelist.jsx
+   - Imports and renders ReportSettings component and ScheduledReport.jsx
+
+### Files Modified:
+3. **`user/src/pages/BRIBankState.jsx`**
+   - Added import for AssetsAndWhitelist component
+   - Added rendering: `{activeTab === "Assets" && <AssetsAndWhitelist />}`
+   - Added import for ReportingAndScheduled component
+   - Changed rendering: `{activeTab === "Reporting" && <ReportingAndScheduled />}`
+   - Added "Assets" to the exclusion list for empty placeholder
+
+## Follow-up Steps:
+- ✅ Test the tab switching functionality
+- ✅ Verify styling matches existing RBAC pattern
+- Ensure responsive behavior
+
+
 
